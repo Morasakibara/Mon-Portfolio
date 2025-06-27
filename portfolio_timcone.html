@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timçone Adrian - Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#6B46C1',
+                        'primary-dark': '#553C9A',
+                        'secondary': '#8B5CF6',
+                        'accent': '#A78BFA'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .hero-bg {
+            background: linear-gradient(135deg, #6B46C1 0%, #553C9A 50%, #4C1D95 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+        }
+        .progress-bar {
+            animation: fillBar 2s ease-in-out;
+        }
+        @keyframes fillBar {
+            from { width: 0%; }
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <style>
+    .aspect-w-16 {
+        position: relative;
+        padding-bottom: 56.25%; /* 16:9 */
+        height: 0;
+    }
+    .aspect-w-16 iframe,
+    .aspect-w-16 video {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+    }
+</style>
+
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white/95 backdrop-blur-sm shadow-lg z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="text-2xl font-bold text-primary">Adrian Timçone</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-gray-600 hover:text-primary transition-colors">Accueil</a>
+                    <a href="#about" class="text-gray-600 hover:text-primary transition-colors">À propos</a>
+                    <a href="#skills" class="text-gray-600 hover:text-primary transition-colors">Compétences</a>
+                    <a href="#services" class="text-gray-600 hover:text-primary transition-colors">Services</a>
+                    <a href="#projects" class="text-gray-600 hover:text-primary transition-colors">Projets</a>
+                    <a href="#contact" class="text-gray-600 hover:text-primary transition-colors">Contact</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-600 hover:text-primary">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-4 py-3 space-y-3">
+                <a href="#home" class="block text-gray-600 hover:text-primary">Accueil</a>
+                <a href="#about" class="block text-gray-600 hover:text-primary">À propos</a>
+                <a href="#skills" class="block text-gray-600 hover:text-primary">Compétences</a>
+                <a href="#services" class="block text-gray-600 hover:text-primary">Services</a>
+                <a href="#projects" class="block text-gray-600 hover:text-primary">Projets</a>
+                <a href="#contact" class="block text-gray-600 hover:text-primary">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section Accueil -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center text-white">
+        <div class="text-center px-4 fade-in">
+            <div class="w-40 h-40 mx-auto mb-8 rounded-full border-4 border-white/30 overflow-hidden bg-white/10">
+                <img id="profile-image" src="./images/profil.jpg" alt="Timçone Adrian" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                <div class="w-full h-full flex items-center justify-center" style="display: none;">
+                    <i class="fas fa-user text-6xl text-white/80"></i>
+                </div>
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold mb-4">Salut, je suis Adrian Timçone de mon vrai nom NCHARE Timothée Adrian</h1>
+            <p class="text-xl md:text-2xl mb-8 text-purple-100">Développeur web full-stack & designer graphique</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#services" class="bg-white text-primary px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition-colors">
+                    Découvrir mes services
+                </a>
+                <a href="#contact" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-primary transition-colors">
+                    Me contacter
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- À propos -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-primary">À propos</h2>
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <p class="text-lg mb-6 text-gray-600 leading-relaxed">
+                        Passionné par le développement web et le design graphique, je combine créativité et expertise technique pour donner vie à vos projets digitaux. Mon objectif est de créer des solutions web innovantes qui répondent parfaitement aux besoins de mes clients.
+                    </p>
+                    <p class="text-lg mb-8 text-gray-600 leading-relaxed">
+                        Actuellement étudiant et développeur freelance, je mets un point d'honneur à livrer des projets de qualité, dans les délais impartis, tout en maintenant une communication transparente avec mes clients.
+                    </p>
+                    <a href="/Mon-CV.pdf" class="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors inline-flex items-center">
+                        <i class="fas fa-download mr-2"></i>
+                        Télécharger mon CV
+                    </a>
+                </div>
+                <div class="space-y-6">
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                            <i class="fas fa-graduation-cap text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-800">Étudiant en GSI</h3>
+                            <p class="text-gray-600">Institut Le Bon Berger</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                            <i class="fas fa-briefcase text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-800">Développeur web freelance</h3>
+                            <p class="text-gray-600">Spécialisé full-stack</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                            <i class="fas fa-map-marker-alt text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-gray-800">Localisé au Cameroun</h3>
+                            <p class="text-gray-600">Disponible à distance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compétences -->
+    <section id="skills" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-primary">Mes compétences</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8 mb-12">
+                <!-- Front-end -->
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-code text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800">Front-end</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span>HTML/CSS</span>
+                            <span class="text-primary font-semibold">95%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-primary h-2 rounded-full progress-bar" style="width: 95%"></div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span>Tailwind CSS</span>
+                            <span class="text-primary font-semibold">90%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-primary h-2 rounded-full progress-bar" style="width: 90%"></div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span>JavaScript</span>
+                            <span class="text-primary font-semibold">85%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-primary h-2 rounded-full progress-bar" style="width: 85%"></div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span>React</span>
+                            <span class="text-primary font-semibold">80%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-primary h-2 rounded-full progress-bar" style="width: 80%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Back-end -->
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-server text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800">Back-end</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span>PHP</span>
+                            <span class="text-primary font-semibold">88%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-primary h-2 rounded-full progress-bar" style="width: 88%"></div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span>Laravel</span>
+                            <span class="text-primary font-semibold">82%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-primary h-2 rounded-full progress-bar" style="width: 82%"></div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span>MySQL</span>
+                            <span class="text-primary font-semibold">85%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-primary h-2 rounded-full progress-bar" style="width: 85%"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Outils -->
+                <div class="bg-white p-6 rounded-xl shadow-lg card-hover">
+                    <div class="text-center mb-6">
+                        <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-tools text-primary text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-gray-800">Outils</h3>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center">
+                            <span>Git</span>
+                            <span class="text-primary font-semibold">90%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-primary h-2 rounded-full progress-bar" style="width: 90%"></div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span>Figma</span>
+                            <span class="text-primary font-semibold">85%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-primary h-2 rounded-full progress-bar" style="width: 85%"></div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span>VS Code</span>
+                            <span class="text-primary font-semibold">95%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-primary h-2 rounded-full progress-bar" style="width: 95%"></div>
+                        </div>
+                        
+                        <div class="flex justify-between items-center">
+                            <span>Canva</span>
+                            <span class="text-primary font-semibold">88%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-primary h-2 rounded-full progress-bar" style="width: 88%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-primary">Mes services</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-gradient-to-br from-primary to-primary-dark text-white p-6 rounded-xl card-hover">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-globe text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Création de site vitrine</h3>
+                        <p class="text-purple-100 mb-4">Sites web modernes et responsives pour présenter votre activité</p>
+                       <button class="open-modal bg-white text-primary px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors"
+                            data-title="Création de site vitrine"
+                            data-image="./images/site.jpg"
+                            data-content="Présentation professionnelle simple avec sections sur vos services, contact, galerie... Idéal pour artisans, PME, freelances.">
+                            En savoir plus
+                        </button>
+
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-gradient-to-br from-secondary to-primary text-white p-6 rounded-xl card-hover">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-cogs text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Applications web</h3>
+                        <p class="text-purple-100 mb-4">Développement d'applications web complètes et performantes</p>
+                        <button class="open-modal bg-white text-primary px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors"
+                            data-title="Applications web"
+                            data-image="./images/app.jpg"
+                            data-content="Applications sur mesure : gestion RH, suivi de présence, archivage numérique, etc. Fonctionnalités dynamiques, sécurisées, adaptées aux besoins métiers.">
+                            En savoir plus
+                        </button>
+
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-gradient-to-br from-accent to-secondary text-white p-6 rounded-xl card-hover">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-bullhorn text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Community management</h3>
+                        <p class="text-purple-100 mb-4">Gestion de vos réseaux sociaux et stratégie digitale</p>
+                        <button class="open-modal bg-white text-primary px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors"
+                            data-title="Community management"
+                            data-image="./images/com.jpg"
+                            data-content="Stratégie de publication, création de contenu visuel, animation de communauté, analyse des performances, boost d'engagement.">
+                            En savoir plus
+                        </button>
+
+                    </div>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="bg-gradient-to-br from-primary-dark to-accent text-white p-6 rounded-xl card-hover">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-paint-brush text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Design graphique</h3>
+                        <p class="text-purple-100 mb-4">Flyers, vidéos, affiches et identité visuelle</p>
+                        <button class="open-modal bg-white text-primary px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors"
+                            data-title="Design graphique"
+                            data-image="./images/design.jpg"
+                            data-content="Création de flyers, cartes de visite, logos, mini-vidéos promotionnelles, visuels pour les réseaux sociaux ou les campagnes publicitaires.">
+                            En savoir plus
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projets -->
+<section id="projects" class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-12 text-primary">Mes projets récents</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Projet 1 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover">
+                <div class="h-48 overflow-hidden">
+                    <img src="./images/projet1.png" alt="Gestion de présence" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">Application web de gestion de présence</h3>
+                    <p class="text-gray-600 mb-4">Plateforme permettant de collecter, traiter et stocker les données de présence au sein d'une entreprise.</p>
+                    <div class="flex space-x-2">
+                        <button class="open-video-modal bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition-colors"
+                            data-video="./videos/projet1.mp4">
+                            Voir plus
+                        </button>
+
+                        <a href="https://github.com/Morasakibara/GestionPresence" class="border border-primary text-primary px-4 py-2 rounded-lg hover:bg-primary hover:text-white transition-colors">
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet 2 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover">
+                <div class="h-48 overflow-hidden">
+                    <img src="./images/projet2.png" alt="Gestion d'événements" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">Gestion d'événements</h3>
+                    <p class="text-gray-600 mb-4">Application de gestion et planification d'événements, avec calendrier interactif et rappels automatisés.</p>
+                    <div class="flex space-x-2">
+                        <button class="open-video-modal bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition-colors"
+                            data-video="./videos/projet1.mp4">
+                            Voir plus
+                        </button>
+
+                        <a href="https://github.com/Morasakibara/GestionPresence" class="border border-primary text-primary px-4 py-2 rounded-lg hover:bg-primary hover:text-white transition-colors">
+                            GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet 3 -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover">
+                <div class="h-48 overflow-hidden">
+                    <img src="./images/projet3.png" alt="Blog personnel" class="w-full h-full object-cover">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-semibold mb-2">Blog Personnel</h3>
+                    <p class="text-gray-600 mb-4">Blog moderne avec système de commentaires, catégories, partage réseaux sociaux et interface responsive.</p>
+                    <div class="flex space-x-2">
+                        <button class="open-video-modal bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition-colors"
+                            data-video="./videos/projet1.mp4">
+                            Voir plus
+                        </button>
+
+                        <button class="border border-primary text-primary px-4 py-2 rounded-lg hover:bg-primary hover:text-white transition-colors">
+                            GitHub
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projet 4 (à venir) -->
+            <div class="bg-white rounded-xl overflow-hidden shadow-lg card-hover opacity-75">
+                <div class="h-48 overflow-hidden">
+                    <img src="./images/projet4.png" alt="Archivage numérique" class="w-full h-full object-cover grayscale">
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center mb-2">
+                        <h3 class="text-xl font-semibold">Application d'archivage numérique</h3>
+                        <span class="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full ml-2">À venir</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Archive numérique des dossiers d'entreprise en cours de développement, avec sécurité renforcée et tri par statut.</p>
+                    <div class="flex space-x-2">
+                        <button class="bg-gray-300 text-gray-500 px-4 py-2 rounded-lg cursor-not-allowed">
+                            Bientôt disponible
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Contact -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-primary">Me contacter</h2>
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Formulaire -->
+                <div>
+                    <form action="https://formspree.io/f/xrbkrpkj" method="POST" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Nom</label>
+                            <input type="text" id="name" name="name" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <input type="email" id="email" name="email" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" required
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary-dark transition-colors font-semibold">
+                            Envoyer le message
+                        </button>
+                        <p class="text-green-600 mt-4 hidden" id="confirmation-message">Votre message a bien été envoyé ! Je vous recontact bientôt!</p>
+
+                    </form>
+
+                </div>
+
+                <!-- Coordonnées -->
+                <div class="space-y-8">
+                    <div>
+                        <h3 class="text-2xl font-semibold mb-6 text-gray-800">Restons en contact</h3>
+                        <p class="text-gray-600 mb-8">N'hésitez pas à me contacter pour discuter de vos projets ou pour toute question.</p>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-envelope text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Email</h4>
+                                <p class="text-gray-600">adriannchare@outlook.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-phone text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Téléphone</h4>
+                                <p class="text-gray-600">+237 655 704 924</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center space-x-4">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                                <i class="fas fa-map-marker-alt text-primary"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Localisation</h4>
+                                <p class="text-gray-600">Cameroun-Yaoundé</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Réseaux sociaux -->
+                    <div>
+                        <h4 class="font-semibold text-gray-800 mb-4">Suivez-moi</h4>
+                        <div class="flex space-x-4">
+                            <a href="https://github.com/Morasakibara/" class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-primary-dark transition-colors">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.linkedin.com/in/adrian-tim%C3%A7one-966b25371/" class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-primary-dark transition-colors">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-primary text-white rounded-full flex items-center justify-center hover:bg-primary-dark transition-colors">
+                                <i class="fab fa-tiktok"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de page -->
+    <footer class="bg-primary-dark text-white py-8">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2025 Adrian Timçone. Tous droits réservés.</p>
+                </div>
+                <div class="flex items-center space-x-6">
+                    <a href="#home" class="hover:text-accent transition-colors">
+                        <i class="fas fa-arrow-up mr-2"></i>Retour haut
+                    </a>
+                    <div class="flex space-x-3">
+                        <a href="https://github.com/Morasakibara/" class="hover:text-accent transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/adrian-tim%C3%A7one-966b25371/" class="hover:text-accent transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="#" class="hover:text-accent transition-colors">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+   
+
+<!-- MODALE DE SERVICE -->
+<div id="service-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+    <div id="modal-box" class="bg-white rounded-xl max-w-xl w-full p-6 shadow-xl relative text-gray-800">
+        <!-- Bouton de fermeture -->
+        <button id="close-modal" class="absolute top-4 right-4 text-gray-500 hover:text-primary">
+            <i class="fas fa-times text-xl"></i>
+        </button>
+
+        <!-- Image du service -->
+        <img id="modal-image" src="" alt="Illustration service" class="w-full h-48 object-cover rounded-lg mb-4">
+
+        <!-- Titre -->
+        <h3 id="modal-title" class="text-2xl font-bold mb-2 text-primary"></h3>
+
+        <!-- Texte -->
+        <p id="modal-content" class="text-gray-600 leading-relaxed"></p>
+    </div>
+</div>
+
+
+<!-- MODALE VIDÉO -->
+<div id="video-modal" class="fixed inset-0 bg-black/60 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-xl max-w-2xl w-full p-6 shadow-xl relative text-gray-800">
+        <button id="close-video-modal" class="absolute top-4 right-4 text-gray-500 hover:text-primary">
+            <i class="fas fa-times text-xl"></i>
+        </button>
+        <div class="aspect-w-16 aspect-h-9 w-full overflow-hidden rounded-lg">
+            <video id="project-video" controls class="w-full h-full rounded-lg">
+                <source src="" type="video/mp4">
+                Votre navigateur ne prend pas en charge la vidéo.
+            </video>
+        </div>
+    </div>
+</div>
+
+<!-- MODALE DE CONFIRMATION -->
+<div id="confirmation-modal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-xl max-w-sm w-full p-6 shadow-xl relative text-center">
+        <button id="close-confirmation" class="absolute top-4 right-4 text-gray-500 hover:text-primary">
+            <i class="fas fa-times text-xl"></i>
+        </button>
+        <div class="text-green-600 text-3xl mb-2">
+            <i class="fas fa-check-circle"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2 text-gray-800">Message envoyé !</h3>
+        <p class="text-gray-600">Merci pour votre message, je vous répondrai dès que possible.</p>
+    </div>
+</div>
+
+
+<script>
+   // Ouvrir la modale de service
+    document.querySelectorAll('.open-modal').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const title = btn.getAttribute('data-title');
+            const content = btn.getAttribute('data-content');
+            const image = btn.getAttribute('data-image');
+
+            document.getElementById('modal-title').textContent = title;
+            document.getElementById('modal-content').textContent = content;
+            document.getElementById('modal-image').setAttribute('src', image);
+
+            document.getElementById('service-modal').classList.remove('hidden');
+        });
+    });
+
+    // Fermer la modale
+    const modal = document.getElementById('service-modal');
+    const closeBtn = document.getElementById('close-modal');
+    const modalBox = document.getElementById('modal-box');
+
+    closeBtn.addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    // Fermer en cliquant dehors
+    modal.addEventListener('click', (e) => {
+        if (!modalBox.contains(e.target)) {
+            modal.classList.add('hidden');
+        }
+    });
+
+</script>
+<script>
+    const videoModal = document.getElementById('video-modal');
+    const videoPlayer = document.getElementById('project-video');
+    const closeVideoBtn = document.getElementById('close-video-modal');
+
+    // Ouvrir la modale avec la bonne vidéo
+    document.querySelectorAll('.open-video-modal').forEach(button => {
+        button.addEventListener('click', () => {
+            const videoSrc = button.getAttribute('data-video');
+            videoPlayer.querySelector('source').setAttribute('src', videoSrc);
+            videoPlayer.load();
+            videoModal.classList.remove('hidden');
+        });
+    });
+
+    // Fermer la modale
+    closeVideoBtn.addEventListener('click', () => {
+        videoModal.classList.add('hidden');
+        videoPlayer.pause();
+        videoPlayer.currentTime = 0;
+    });
+
+    // Fermer la modale en cliquant en dehors
+    videoModal.addEventListener('click', (e) => {
+        if (!e.target.closest('video') && !e.target.closest('button')) {
+            videoModal.classList.add('hidden');
+            videoPlayer.pause();
+            videoPlayer.currentTime = 0;
+        }
+    });
+</script>
+ <script>
+        // Menu mobile
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Fermer le menu mobile lors du clic sur un lien
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        const form = document.querySelector("form");
+        const message = document.getElementById("confirmation-message");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { Accept: "application/json" }
+            }).then(response => {
+            if (response.ok) {
+                message.classList.remove("hidden");
+                form.reset();
+            } else {
+                alert("Une erreur est survenue. Veuillez réessayer.");
+            }
+            });
+        });
+
+        // Animation d'apparition des éléments au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0.1s';
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observer les sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Smooth scroll pour la navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation des barres de progression
+        const animateProgressBars = () => {
+            const progressBars = document.querySelectorAll('.progress-bar');
+            progressBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 500);
+            });
+        };
+
+        // Observer la section compétences pour déclencher l'animation
+        const skillsSection = document.getElementById('skills');
+        const skillsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateProgressBars();
+                    skillsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        skillsObserver.observe(skillsSection);
+
+        const confirmationModal = document.getElementById("confirmation-modal");
+    const closeConfirmation = document.getElementById("close-confirmation");
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { Accept: "application/json" }
+        }).then(response => {
+            if (response.ok) {
+                confirmationModal.classList.remove("hidden");
+                form.reset();
+            } else {
+                alert("Une erreur est survenue. Veuillez réessayer.");
+            }
+        });
+    });
+
+    // Fermer la modale par le bouton
+    closeConfirmation.addEventListener("click", () => {
+        confirmationModal.classList.add("hidden");
+    });
+
+    // Fermer la modale en cliquant à l'extérieur
+    confirmationModal.addEventListener("click", (e) => {
+        if (!e.target.closest("div.bg-white")) {
+            confirmationModal.classList.add("hidden");
+        }
+    });
+
+    </script>
+
+
+
+</body>
+</html>
